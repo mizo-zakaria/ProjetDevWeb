@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Tagesschrift", system-ui;
+}
+.inscriptionform h1{
+   font-family: "Pirata One", system-ui;
+   color: #ffdb12;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  text-align:center;
+
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+    background:url('../background/side.jpg') right no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position:center;
+  height: 100vh;
+  width: 100%;
+}
+.inscriptionform {
+  width:480px;
+  background:transparent;
+  border:2px solid #ffdb123f;
+  backdrop-filter: blur(15px);
+  box-shadow:0 0 10px rgba(0,0,0,.2);
+  border-radius: 12px;
+  padding: 30px 40px;
+}
+.inbox span{
+    color:#ffdb12e7;
+    position: relative;
+    left:12px;
+}
+.inscriptionform .inbox{
+    
+    width:100%;
+    height:50px;
+     position:relative;
+    margin:10px 0;
+}
+.inbox input{
+    width: 100%;
+    height:100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid #ffdb123f;
+    border-radius: 40px;
+    font-size: 16px;
+    color:#fff;
+    padding:20px 45px 20px 20px;
+}
+.inbox input::placeholder{
+    color:#ffffff7a;
+
+}
+.inbox input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+}
+
+.inbox i{
+    position:absolute;
+    color: #ffdb12;
+    right:20px;
+     top:50%;
+     transform: translateY(-50%);
+     font-size:20px;
+
+}
+.inscriptionform .btn{
+    width:100%;
+    height:45px;
+    background:#ffdb12;
+    border:none;
+    outline:none;
+    border-radius:40px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+    cursor:pointer;
+    font-size: 20px;
+    font-weight: 600;
+    color: #61160B;
+}
+.inscriptionform .btn:hover{
+  color:white;
+  background:#ffdb123c;
+}
+#mylogo{
+    position: absolute;
+    width:160px;
+    bottom:90%;
+    left:1%;
+    cursor:pointer;
+    overflow:hidden;
+    border-radius: 3px;
+    transition: transform 0.5s ease;
+    transform-origin: center center;
+
+} 
+#mylogo:hover{
+       transform: scale(1.1); 
+}
+#home i{
+color: #ffdb12;
+font-size: 34px;
+  font-weight: 700;
+  position: absolute;
+  left: 96%;
+  bottom:92%;
+  line-height: 60px;
+     cursor: pointer;
+  opacity: 1;
+  transition: transform 0.3s ease-in-out; 
+}
+#home i:hover{
+    transform: scale(1.3); 
+}
+.gender {
+ display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-top:40px;
+    margin-bottom:14px;
+}
+.gender i{
+  color: #ffdb12;
+  background:transparent;
+  outline: none;
+  border: 2px solid #ffdb1292;
+  border-radius:23px;
+  padding-right:4px;
+  padding-left:4px;
+  font-size:34px;
+  font-weight: 700;
+  line-height: 60px; 
+   cursor: pointer;
+  opacity: 1;
+  transition: all 0.3s linear; 
+}
+.gender i:hover {
+font-size:40px;
+}
+
+.gender .female {
+    
+    position:relative;
+    left:-60px;
+}
+.gender #check1{
+    position:relative;
+    right:40px;
+
+    display:none;
+}
+.gender #check2{
+    position:relative;
+    right:-94px;
+  
+    display: none;
+}
+.male{
+    position:relative;
+    right:-60px;
+    bottom:px;
+}
