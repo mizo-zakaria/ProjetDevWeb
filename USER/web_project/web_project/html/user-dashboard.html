@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte - Cinema Camera</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Tagesschrift&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tagesschrift', sans-serif;
+        }
+        
+        body {
+            background: url('../background/side.jpg') center/cover fixed;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 80px auto 40px auto;
+            background: transparent;
+             backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #ffdb1266;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 219, 18, 0.3);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ffdb12, #ff9800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: black;
+            font-weight: bold;
+        }
+        
+        .user-details h1 {
+            color: #ffdb12;
+            font-family: 'Pirata One', cursive;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .user-details p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+        }
+        
+        .logout-btn {
+            background: transparent;
+            border: 1px solid #e7bb1d45;
+            color: #ffffff4e;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logout-btn:hover {
+           background: rgba(255, 255, 255, 0.2);
+              color:#ffdb12; 
+             box-shadow :0 0 30px rgba(231, 152, 152, 0.334);
+              transform: translateY(-5px);
+        }
+        
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .section-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffdb12;
+        }
+        
+        .section-card h2 {
+            color: #ffdb12;
+            font-family: 'Pirata One', cursive;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+        }
+        
+        .favorite-film {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .film-poster {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .film-title {
+            padding: 10px;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .empty-state i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.614);
+            text-decoration: none;
+            font-weight: 500;      
+            border-radius: 50px;
+            transition: background 0.3s;
+           text-align: center;
+           padding: 16px 16px;
+           font-weight: 400;
+           background: rgba(255, 255, 255, 0.095);
+        }
+        
+        .nav-back:hover {
+           background: rgba(255, 255, 255, 0.2);
+              color:#ffdb12; 
+             box-shadow :0 0 30px rgba(231, 152, 152, 0.334);
+              transform: translateY(-5px);
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation back to programme -->
+    <a href="programme.html" class="nav-back">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details">
+                    <h1 id="userName">Utilisateur</h1>
+                    <p id="userEmail">email@exemple.com</p>
+                    <p id="memberSince" style="font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 5px;">
+                        Membre depuis <span id="joinDate">aujourd'hui</span>
+                    </p>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Déconnexion
+            </button>
+        </div>
+        
+        <div class="dashboard-content">
+            <!-- Films Favoris Section -->
+            <div class="section-card">
+                <h2><i class="fas fa-heart"></i> Mes Films Favoris</h2>
+                <div id="favoritesContent">
+                    <div class="favorites-grid" id="favoritesGrid">
+                        <!-- Favorites will be loaded here -->
+                    </div>
+                    <div class="empty-state" id="emptyFavorites">
+                        <i class="fas fa-heart-broken"></i>
+                        <p>Vous n'avez pas encore de films favoris</p>
+                        <p style="font-size: 14px; margin-top: 10px;">
+                            Retournez au <a href="programme.html" style="color: #ffdb12;">programme</a> pour en ajouter
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Informations Personnelles -->
+            <div class="section-card">
+                <h2><i class="fas fa-user"></i> Mon Profil</h2>
+                <div style="margin-top: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: rgba(255,255,255,0.7);">Nom complet:</strong>
+                        <p id="profileName" style="color: white; margin-top: 5px;"></p>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: rgba(255,255,255,0.7);">Nom d'utilisateur:</strong>
+                        <p id="profileUsername" style="color: white; margin-top: 5px;"></p>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: rgba(255,255,255,0.7);">Email:</strong>
+                        <p id="profileEmail" style="color: white; margin-top: 5px;"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Statistiques -->
+            <div class="section-card">
+                <h2><i class="fas fa-chart-bar"></i> Mes Statistiques</h2>
+                <div style="margin-top: 20px;">
+                    <div style="background: rgba(255, 219, 18, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 32px; color: #ffdb12; font-weight: bold;" id="favoritesCount">0</div>
+                        <div style="color: rgba(255,255,255,0.7);">Films favoris</div>
+                    </div>
+                    <div style="background: rgba(76, 175, 80, 0.1); padding: 15px; border-radius: 8px;">
+                        <div style="font-size: 32px; color: #4CAF50; font-weight: bold;" id="memberDays">1</div>
+                        <div style="color: rgba(255,255,255,0.7);">Jours de membre</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="../js/session.js"></script>
+    <script>
+        // Load filmObject from programme page or create fallback
+        let filmObject = [];
+        
+        // Try to get filmObject from localStorage or use fallback
+        try {
+            filmObject = JSON.parse(localStorage.getItem('filmObject')) || [];
+        } catch (e) {
+            filmObject = [];
+        }
+        
+        // Load user data
+        function loadUserData() {
+            const user = CinemaSession.getCurrentUser();
+            
+            if (!user) {
+                // Not logged in, redirect to login
+                window.location.href = 'connexion.html';
+                return;
+            }
+            
+            // Update user info
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('profileName').textContent = user.name;
+            document.getElementById('profileUsername').textContent = user.username;
+            document.getElementById('profileEmail').textContent = user.email;
+            
+            // Set avatar initial
+            document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
+            
+            // Load favorites
+            loadFavorites();
+        }
+        
+        // Load favorite films
+        function loadFavorites() {
+            const favoritesGrid = document.getElementById('favoritesGrid');
+            const emptyState = document.getElementById('emptyFavorites');
+            const favoritesCount = document.getElementById('favoritesCount');
+            
+            const favorites = CinemaSession.getUserFavorites();
+            
+            // Update count
+            favoritesCount.textContent = favorites.length;
+            
+            if (favorites.length > 0) {
+                emptyState.style.display = 'none';
+                favoritesGrid.innerHTML = '';
+                
+                favorites.forEach(filmId => {
+                    const film = filmObject[filmId];
+                    if (film) {
+                        const filmElement = document.createElement('div');
+                        filmElement.className = 'favorite-film';
+                        filmElement.innerHTML = `
+                            <div class="film-poster" style="background-image: url('${film.img}')"></div>
+                            <div class="film-title">${film.titre}</div>
+                            <div style="padding: 0 10px 10px 10px; font-size: 12px; color: rgba(255,255,255,0.7);">
+                                ${film.genre} • ${film.version || ''}
+                            </div>
+                            <button onclick="removeFavorite(${filmId})" 
+                                    style="background: rgba(255,0,0,0.2); border: 1px solid #ff6b6b; color: #ff6b6b; 
+                                           padding: 5px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; margin: 10px;font-family=''">
+                                <i class="fas fa-times"></i> Retirer
+                            </button>
+                        `;
+                        favoritesGrid.appendChild(filmElement);
+                    }
+                });
+            } else {
+                emptyState.style.display = 'block';
+                favoritesGrid.innerHTML = '';
+            }
+        }
+        
+        // Remove favorite
+        function removeFavorite(filmId) {
+            if (confirm('Retirer ce film de vos favoris ?')) {
+                CinemaSession.removeFavorite(filmId);
+                loadFavorites();
+            }
+        }
+        
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
+                CinemaSession.clearSession();
+                window.location.href = 'programme.html';
+            }
+        });
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', loadUserData);
+    </script>
+</body>
+</html>

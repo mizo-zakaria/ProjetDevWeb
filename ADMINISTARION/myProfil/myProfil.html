@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profil</title>
+    <link rel="stylesheet" href="styleMyProfil.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <!-- navbar -->
+    <nav id="nav_bar">
+        <div id="logo">
+            <img src="../affiche/mylogo.png" alt="logo">
+        </div>
+        <article>
+            <i class="bi bi-house"></i>
+            <a href="../Dashboard/index.html">Dashboard</a>
+        </article>
+        <article>
+            <i class="bi bi-ticket-detailed"></i>
+            <a href="../Reservation/reservation.html">Reservation</a>
+        </article>
+        <article>
+            <i class="bi bi-film"></i>
+            <a href="../Gestion_Films/GestFilms.html">Films</a>
+        </article>
+        <article>
+            <i class="bi bi-star-fill"></i>
+            <a href="../Avis/Avis.html">Avis</a>
+        </article>
+        <article>
+            <i class="bi bi-person-circle"></i>
+            <a href="../myProfil/myProfil.html">My profil</a>
+        </article>
+        <div class="Deconnexion">
+            <a href="../../USER/web_project/web_project/html/index.html">Déconnexion</a>
+        </div>
+    </nav>
+
+    <!-- main content -->
+    <main class="profilMain">
+        <div class="profilCard">
+            <div class="cardView">
+                <img src="../affiche/admin.jpeg" alt="Profile Picture" class="profileImg">
+                <h2 id="displayName">John Doe</h2>
+                <p id="displaySurname">Smith</p>
+                <p id="displayEmail">john@example.com</p>
+                <p id="displayPhone">+212 600 000 000</p>
+                <button id="editBtn">Edit Profile</button>
+            </div>
+            <div class="cardEdit" style="display:none;">
+                <input type="text" id="inputName" placeholder="Name">
+                <input type="text" id="inputSurname" placeholder="Surname">
+                <input type="email" id="inputEmail" placeholder="Email">
+                <input type="text" id="inputPhone" placeholder="Phone">
+                <button id="saveBtn">Save Changes</button>
+                <button id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="scriptMyProfil.js"></script>
+</body>
+</html>

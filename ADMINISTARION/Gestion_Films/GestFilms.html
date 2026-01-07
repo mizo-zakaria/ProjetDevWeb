@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Films</title>
+    <link rel="stylesheet" href="styleGesFilms.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <!-- navbar -->
+        <nav id="nav_bar">
+            <div id="logo">
+                <img src="../affiche/mylogo.png" alt="logo">
+            </div>
+            <article>
+                <i class="bi bi-house"></i>
+                <a href="../Dashboard/index.html">Dashboard</a>
+                
+            </article>
+            <article>
+                <i class="bi bi-ticket-detailed"></i>
+                <a href="../Reservation/reservation.html">Reservation</a>
+                
+            </article>
+            <article>
+                <i class="bi bi-film"></i>
+                <a href="../Gestion_Films/GestFilms.html">Films</a>
+               
+            </article>
+            <article>
+                <i class="bi bi-star-fill"></i>
+                <a href="../Avis/Avis.html">Avis</a>
+               
+            </article>
+            <article>
+                <i class="bi bi-person-circle"></i>
+                <a href="../myProfil/myProfil.html">My profil</a>
+              
+            </article>
+                <div class="Deconnexion">
+                <a href="../../USER/web_project/web_project/html/index.html">Déconnexion</a>
+                
+            </div>
+        </nav>
+        <!-- partie cruds films -->
+        <main class="crudsGesFilms">
+                <!-- partie head -->
+            <div class="head">
+                <h2>films</h2>
+                <p>Gestion de films system</p>
+            </div>
+                <!-- partie inputs -->
+            <div class="inputs">
+                <div>
+                    <input placeholder="Title" type="text" id="title">
+                </div>
+                <div>
+                    <input placeholder="Description" type="text" id="description">
+                </div>
+                <div class="input_classA">
+                    <input placeholder="Genre" type="text" id="genre">
+                    <input placeholder="Duration" type="number" id="duration">
+                    <input placeholder="Release Date" type="date" id="releaseDate">
+                </div>
+                <div class="input_classB">
+                    <input placeholder="Language Original" type="text" id="lang_org">
+                    <input placeholder="language doublage" type="text" id="lang_doub">
+                    <input type="file" id="file" accept="image/*">
+                </div>
+                <div class="input_classC">
+                    <input placeholder="Auteur" type="text" id="auteur">
+                    <input placeholder="Director" type="text" id="director">
+                </div>
+                <button type="submit" id="submit">CREATE</button>
+                <div id="update"></div>
+            </div>
+                <!-- partie outputs -->
+            <div class="outputs">
+                <div class="searchOutput">
+                    <div>
+                        <input onkeyup="filterData(this.value)" placeholder="SEARCH" type="text" id="search">
+                    </div>
+                    <div class="output_classA">
+                        <button onclick="searchMood(this.id)" id="btnTitle">Search by title</button>
+                        <button onclick="searchMood(this.id)" id="btnGenre">Search by genre</button>
+                    </div>
+                </div>
+                <div id="divDeleteAll"></div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>image</th>
+                                <th>id</th>
+                                <th>title</th>
+                                <th>Description</th>
+                                <th>genre</th>
+                                <th>duration</th>
+                                <th>release Date</th>
+                                <th>Auteur</th>
+                                <th>director</th>
+                                <th>language oroginale</th>
+                                <th>language doublage</th>
+                                <th>update</th>
+                                <th>delate</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+
+        <script src="scriptGesFilms.js"></script>
+</body>
+</html>
